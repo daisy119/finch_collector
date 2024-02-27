@@ -1,8 +1,5 @@
 from django.shortcuts import render
 
-# Add the following import
-from django.http import HttpResponse
-
 # Add the Cat class & list and view function below the imports
 class Puppy:  # Note that parens are optional if not inheriting from another class
   def __init__(self, name, breed, description, age):
@@ -20,7 +17,7 @@ puppies = [
 
 # Define the home view
 def home(request):
-  return HttpResponse('<h1>Hello puppies[⽝]🐕</h1>')
+  return render (request, 'home.html')
 
 def about(request):
   return render(request, 'about.html')
