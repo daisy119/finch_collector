@@ -12,7 +12,7 @@ class Puppy:  # Note that parens are optional if not inheriting from another cla
     self.age = age
 
 puppies = [
-  Puppy('Lolo', 'pomeraniam', 'Kinda rude.', 3),
+  Puppy('Lolo', 'pom', 'Kinda rude.', 3),
   Puppy('Sachi', 'dachshund', 'Looks like a turtle.', 0),
   Puppy('Fancy', 'corgi', 'Happy fluff ball.', 4),
   Puppy('Bonk', 'westie', 'Bark loudly.', 6)

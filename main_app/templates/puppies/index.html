@@ -12,30 +12,31 @@
 {% block content %}
 
 <section class="page-header">
-  <h1>Cat List</h1>
-  <img src="{% static 'images/shibabark.jpeg' %}" alt="A cool cat" />
-  <img src="{% static 'images/happy-cat.svg' %}" alt="A happy cat" />
-  <img src="{% static 'images/teacup-cat.svg' %}" alt="A cat in a teacup" />
-  <img src="{% static 'images/cat-in-box.svg' %}" alt="A cat in a box" />
+  <h1>Puppy List</h1>
+  <img class ="small-pup" src="{% static 'images/pome.png' %}" alt="A cool dog" />
+  <img class ="small-pup" src="{% static 'images/dachs.png' %}" alt="A happy dog" />
+  <img class ="small-pup" src="{% static 'images/corgi.png' %}" alt="A dog in a teacup" />
+  <img class ="small-pup" src="{% static 'images/westie.png' %}" alt="A dog in a box" />
 </section>
 
 <section class="card-container">
-  {% for cat in cats %}
+  {% for puppy in puppies %}
     <div class="card">
       <div class="card-content">
         <div class="card-img-container">
           <img 
-            src="{% static 'images/sk8r-boi-cat.svg' %}" 
-            alt="A skater boy cat"
+            id="puppy-card"
+            src="{% static 'images/happyshiba.png' %}" 
+            alt="A friendly puppy"
           >
         </div>
-        <h2 class="card-title">{{ cat.name }}</h2>
-        {% if cat.age > 0 %}
-          <p>A {{ cat.age }} year old {{ cat.breed }}</p>
+        <h2 class="card-title">{{ puppy.name }}</h2>
+        {% if puppy.age > 0 %}
+          <p>A {{ puppy.age }} year old {{ puppy.breed }}</p>
         {% else %}
-          <p>A {{ cat.breed }} kitten.</p>
+          <p>A {{ puppy.breed }} pup.</p>
         {% endif %}
-        <p><small>{{ cat.description }}</small></p>
+        <p><small>{{ puppy.description }}</small></p>
       </div>
     </div>
   {% endfor %}
