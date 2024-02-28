@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="page-header">
+  <h1>Release the Puppy?</h1>
+  <img id="delete-pup" src="{% static 'images/happyshiba.png' %}" alt="A happy shiba inu"/>
+</div>
+<h2>Are you sure you want to set {{puppy.name}} free?</h2>
+
+<form action="" method="post" class="form">
+  {% csrf_token %}
+  <a 
+    href="{% url 'puppy-detail' puppy.id %}" 
+    class="btn secondary"
+  >
+    Cancel
+  </a>
+  <button type="submit" class="btn danger">Release {{puppy.name}}!</button>
+</form>
+
+{% endblock %}
