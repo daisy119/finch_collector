@@ -1,19 +1,5 @@
 from django.shortcuts import render
-
-# Add the Cat class & list and view function below the imports
-class Puppy:  # Note that parens are optional if not inheriting from another class
-  def __init__(self, name, breed, description, age):
-    self.name = name
-    self.breed = breed
-    self.description = description
-    self.age = age
-
-puppies = [
-  Puppy('Lolo', 'pom', 'Kinda rude.', 3),
-  Puppy('Sachi', 'dachshund', 'Looks like a turtle.', 0),
-  Puppy('Fancy', 'corgi', 'Happy fluff ball.', 4),
-  Puppy('Bonk', 'westie', 'Bark loudly.', 6)
-]
+from .models import Puppy
 
 # Define the home view
 def home(request):
@@ -22,6 +8,10 @@ def home(request):
 def about(request):
   return render(request, 'about.html')
 
-# Add new view
 def puppy_index(request):
+  puppies = Puppy.objects.all()
   return render(request, 'puppies/index.html', { 'puppies': puppies })
+
+def puppy_detail(request, puppy_id):
+  puppy = Puppy.objects.get(id=puppy_id)
+  return render(request, 'puppies/detail.html', { 'puppy': puppy })
