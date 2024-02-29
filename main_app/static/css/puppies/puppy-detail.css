@@ -24,6 +24,11 @@
   margin-top: 20px;
 }
 
+.feeding-img{
+  width: 16%;
+  gap:-10px;
+}
+
 .feedings-toy-container {
   display: flex;
   flex-direction: column;
@@ -220,5 +225,5 @@
 
 #happyshiba{
   width: 100%;
-  margin-left: -350px;
+  margin-left: -150px;
 }
