@@ -15,13 +15,10 @@ def puppy_index(request):
   puppies = Puppy.objects.all()
   return render(request, 'puppies/index.html', { 'puppies': puppies })
 
-def puppy_detail(request, puppy_id):
-  puppy = Puppy.objects.get(id=puppy_id)
-  return render(request, 'puppies/detail.html', { 'puppy': puppy })
 
 class PuppyCreate(CreateView):
   model = Puppy
-  fields = '__all__'
+  fields = ['name', 'breed', 'description', 'age']
   success_url = '/puppies'
 
 class PuppyUpdate(UpdateView):
@@ -35,10 +32,12 @@ class PuppyDelete(DeleteView):
 
 def puppy_detail(request, puppy_id):
   puppy = Puppy.objects.get(id=puppy_id)
+  # id_in look up id
+  toys_puppy_doesnt_have = Toy.objects.exclude(id__in = puppy.toys.all().values_list('id'))
   # instantiate FeedingForm to be rendered in the template
   feeding_form = FeedingForm()
   return render(request, 'puppies/detail.html', {
-    'puppy': puppy, 'feeding_form': feeding_form
+    'puppy': puppy, 'feeding_form': feeding_form, 'toys': toys_puppy_doesnt_have
   })
 
 def add_feeding(request, puppy_id):
@@ -72,3 +71,8 @@ class ToyUpdate(UpdateView):
 class ToyDelete(DeleteView):
   model = Toy
   success_url = '/toys/'
+
+def assoc_toy(request, puppy_id, toy_id):
+  # Note that you can pass a toy's id instead of the whole object
+  Puppy.objects.get(id=puppy_id).toys.add(toy_id)
+  return redirect('puppy-detail', puppy_id=puppy_id)
