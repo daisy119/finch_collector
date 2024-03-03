@@ -22,4 +22,5 @@ urlpatterns = [
     # In this case '' represents the root route
     path('', include('main_app.urls')),
     path('', include('main_app.urls')),
+    path('accounts/', include('django.contrib.auth.urls')), 
 ]

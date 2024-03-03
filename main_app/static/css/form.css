@@ -38,6 +38,10 @@ td > textarea {
   margin-right: 40px;
 }
 
+#shiba{
+  width: 10%;
+}
+
 #shiba-add{
   width: 10%;
 }
@@ -45,3 +49,4 @@ td > textarea {
 #nodding-shiba{
   width: 15%;
 }
+
